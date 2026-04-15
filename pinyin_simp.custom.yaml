@@ -1,0 +1,11 @@
+patch:
+  engine/processors:
+    - ascii_composer
+    - recognizer
+    - key_binder
+    - lua_processor@*kp_digit_commit_processor
+    - speller
+    - punctuator
+    - selector
+    - navigator
+    - express_editor

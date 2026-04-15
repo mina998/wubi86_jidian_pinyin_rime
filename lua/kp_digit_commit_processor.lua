@@ -11,6 +11,16 @@ local keypad_symbol_map = {
   KP_Equal = "=",
 }
 
+local main_keyboard_symbol_map = {
+  comma = ",",
+  period = ".",
+  question = "?",
+  colon = ":",
+  apostrophe = "'",
+  quotedbl = "\"",
+  slash = "/",
+}
+
 local function keypad_text_from_key(key)
   local repr = key:repr()
   local digit = repr:match("^KP_([0-9])$")
@@ -21,6 +31,11 @@ local function keypad_text_from_key(key)
   local symbol = keypad_symbol_map[repr]
   if symbol then
     return symbol
+  end
+
+  local main_symbol = main_keyboard_symbol_map[repr]
+  if main_symbol then
+    return main_symbol
   end
 
   local keycode = key.keycode
@@ -36,6 +51,13 @@ local function keypad_text_from_key(key)
     [0xffaf] = "/",
     [0xffac] = ",",
     [0xffbd] = "=",
+    [44] = ",",
+    [46] = ".",
+    [63] = "?",
+    [58] = ":",
+    [39] = "'",
+    [34] = "\"",
+    [47] = "/",
   }
 
   return keycode_symbol_map[keycode]
